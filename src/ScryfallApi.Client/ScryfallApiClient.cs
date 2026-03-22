@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+
 using ScryfallApi.Client.Apis;
 
 namespace ScryfallApi.Client;
@@ -33,15 +34,15 @@ public class ScryfallApiClient : IScryfallApiClient
     /// <param name="httpClient"></param>
     /// <param name="clientConfig"></param>
     /// <param name="cache"></param>
-    public ScryfallApiClient(HttpClient httpClient, ScryfallApiClientConfig clientConfig = null, IMemoryCache cache = null)
+    public ScryfallApiClient(HttpClient httpClient, ScryfallApiClientConfig? clientConfig = null, IMemoryCache? cache = null)
     {
         if (clientConfig is null)
         {
-            clientConfig = ScryfallApiClientConfig.GetDefault();
+            clientConfig = ScryfallApiClientConfig.Default;
             clientConfig.EnableCaching = cache is not null;
         }
 
-        var restService = new BaseRestService(httpClient, clientConfig, cache);
+        BaseRestService restService = new(httpClient, clientConfig, cache);
         _cards = new Lazy<ICards>(() => new Cards(restService));
         _catalogs = new Lazy<ICatalogs>(() => new Catalogs(restService));
         _sets = new Lazy<ISets>(() => new Sets(restService));

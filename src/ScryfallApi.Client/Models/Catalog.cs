@@ -2,14 +2,17 @@
 
 namespace ScryfallApi.Client.Models;
 
-class Catalog : BaseItem
+public record Catalog : BaseItem
 {
+    /// <summary> A link to the current catalog on Scryfall's API. </summary>
     [JsonPropertyName("uri")]
-    public Uri Uri { get; set; }
+    public required Uri Uri { get; init; }
 
+    /// <summary> The number of items in the <see cref="Data"/>data</see> array. </summary>
     [JsonPropertyName("total_values")]
-    public int TotalValues { get; set; }
+    public int TotalValues { get; init; }
 
+    /// <summary> An array of datapoints, as strings. </summary>
     [JsonPropertyName("data")]
-    public string[] Data { get; set; }
+    public required IReadOnlyList<string> Data { get; init; }
 }

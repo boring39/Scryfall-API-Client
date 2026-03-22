@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/ScryfallApi.WebSample/ScryfallApi.WebSample.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="src/ScryfallApi.Client/ScryfallApi.Client.csproj" />
+</Solution>

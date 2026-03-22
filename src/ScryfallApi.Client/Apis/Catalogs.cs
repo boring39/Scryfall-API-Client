@@ -12,18 +12,44 @@ public class Catalogs : ICatalogs
         _restService = restService;
     }
 
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    public async Task<string[]> ListCardNames() => (await _restService.GetAsync<Catalog>("/catalog/card-names").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListWordBank() => (await _restService.GetAsync<Catalog>("/catalog/word-bank").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListCreatureTypes() => (await _restService.GetAsync<Catalog>("/catalog/creature-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListPlaneswalkerTypes() => (await _restService.GetAsync<Catalog>("/catalog/planeswalker-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListLandTypes() => (await _restService.GetAsync<Catalog>("/catalog/land-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListSpellTypes() => (await _restService.GetAsync<Catalog>("/catalog/spell-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListEnchantmentTypes() => (await _restService.GetAsync<Catalog>("/catalog/enchantment-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListArtifactTypes() => (await _restService.GetAsync<Catalog>("/catalog/artifact-types").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListPowers() => (await _restService.GetAsync<Catalog>("/catalog/powers").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListToughnesses() => (await _restService.GetAsync<Catalog>("/catalog/toughnesses").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListLoyalties() => (await _restService.GetAsync<Catalog>("/catalog/loyalties").ConfigureAwait(false)).Data;
-    public async Task<string[]> ListWatermarks() => (await _restService.GetAsync<Catalog>("/catalog/watermarks").ConfigureAwait(false)).Data;
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
+    public Task<Catalog> ListCardNames(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/card-names", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListWordBank(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/word-bank", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListCreatureTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/creature-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListPlaneswalkerTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/planeswalker-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListLandTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/land-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListSpellTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/spell-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListEnchantmentTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/enchantment-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListArtifactTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/artifact-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListPowers(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/powers", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListToughnesses(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/toughnesses", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListLoyalties(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/loyalties", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListWatermarks(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/watermarks", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListArtistNames(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/artist-names", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListSuperTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/supertypes", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListCardTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/card-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListBattleTypes(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/battle-types", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListKeywordAbilities(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/keyword-abilities", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListKeywordActions(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/keyword-actions", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListAbilityWords(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/ability-words", UriKind.Relative), cancellationToken: cancellationToken);
+    public Task<Catalog> ListFlavorWords(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<Catalog>(new Uri("/catalog/flavor-words", UriKind.Relative), cancellationToken: cancellationToken);
 }

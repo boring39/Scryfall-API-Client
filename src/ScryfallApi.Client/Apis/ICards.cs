@@ -1,4 +1,5 @@
 ﻿using ScryfallApi.Client.Models;
+
 using static ScryfallApi.Client.Models.SearchOptions;
 
 namespace ScryfallApi.Client.Apis;
@@ -9,34 +10,49 @@ namespace ScryfallApi.Client.Apis;
 /// </summary>
 public interface ICards
 {
-    /// <summary>
-    /// Fetch a card at random.
-    /// </summary>
+    /// <summary> Fetch a card at random. </summary>
     /// <returns></returns>
-    Task<Card> GetRandom();
+    Task<Card> GetRandom(CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Get a page worth of cards
-    /// </summary>
+    /// <summary> Get a page worth of cards </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    Task<ResultList<Card>> Get(int page);
+    Task<ResultList<Card>> GetPage(int page, CancellationToken cancellationToken = default);
 
-    /// <summary>
-    /// Search for cards with a sort option
-    /// </summary>
+    /// <summary> Search for cards with a sort option </summary>
     /// <param name="query"></param>
     /// <param name="page"></param>
     /// <param name="sort"></param>
     /// <returns></returns>
-    Task<ResultList<Card>> Search(string query, int page, CardSort sort);
-    
-    /// <summary>
-    /// Search for cards using the full search options available
-    /// </summary>
+    Task<ResultList<Card>> Search(string query, int page, SortOrder sort, CancellationToken cancellationToken = default);
+
+    /// <summary> Search for cards using the full search options available </summary>
     /// <param name="query"></param>
     /// <param name="page"></param>
     /// <param name="options"></param>
     /// <returns></returns>
-    Task<ResultList<Card>> Search(string query, int page, SearchOptions options);
+    Task<ResultList<Card>> Search(string query, int page, SearchOptions options, CancellationToken cancellationToken = default);
+
+
+    // Named
+
+    // Autocomplete
+
+    // Random
+
+    // Collection
+
+    // :Code /:number / :lang
+
+    // Multiverse/:id
+
+    // Mtgo/:id
+
+    // Arena/:id
+
+    // TcgPlayer/:id
+
+    // Cardmarket/:id
+
+    // Cards/:id
 }

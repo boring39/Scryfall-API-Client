@@ -12,11 +12,11 @@ public interface ISymbology
     /// Retrieve all card symbols
     /// </summary>
     /// <returns></returns>
-    Task<ResultList<Symbol>> Get();
+    Task<ResultList<CardSymbol>> Get(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parses the given mana cost parameter and returns Scryfall’s interpretation.
     /// </summary>
     /// <returns></returns>
-    Task<ManaCost> ParseMana(string cost);
+    Task<ManaCost> ParseMana(string cost, CancellationToken cancellationToken = default);
 }

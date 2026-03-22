@@ -9,7 +9,7 @@ namespace ScryfallApi.Client.Tests
         public void Test1()
         {
             // https://github.com/richardszalay/mockhttp
-            new SearchOptions().bui
+            //new SearchOptions().bui
         }
     }
 }

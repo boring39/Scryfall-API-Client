@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ScryfallApi.Client;
+namespace ScryfallApi.Client.Converters;
 
 /// <summary>
 /// Scryfall uses strings to encode their monetary amounts in US format rather than simply using a
@@ -13,8 +13,8 @@ internal class UsDecimalAsStringConverter : JsonConverter<decimal?>
 {
     public override decimal? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var value = reader.GetString();
-        var numberFormat = CultureInfo.GetCultureInfo("en-US").NumberFormat;
+        string? value = reader.GetString();
+        NumberFormatInfo numberFormat = CultureInfo.GetCultureInfo("en-US").NumberFormat;
         return value is null ? null : decimal.Parse(value, numberFormat);
     }
 

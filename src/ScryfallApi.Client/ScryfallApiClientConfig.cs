@@ -2,12 +2,15 @@
 
 public class ScryfallApiClientConfig
 {
-    public Uri ScryfallApiBaseAddress { get; set; } = new Uri("https://api.scryfall.com/");
-    public bool EnableCaching { get; set; } = true;
-    public TimeSpan CacheDuration { get; set; } = TimeSpan.FromMinutes(30);
-    public bool UseSlidingCacheExpiration { get; set; } = false;
+    private const string ScryfallApi = "https://api.scryfall.com/";
+    private const int DefaultCacheDuration = 30;
 
-    internal ScryfallApiClientConfig Clone() => new ScryfallApiClientConfig
+    public Uri ScryfallApiBaseAddress { get; set; } = new Uri(ScryfallApi);
+    public bool EnableCaching { get; set; } = true;
+    public TimeSpan CacheDuration { get; set; } = TimeSpan.FromMinutes(DefaultCacheDuration);
+    public bool UseSlidingCacheExpiration { get; set; }
+
+    internal ScryfallApiClientConfig Clone() => new()
     {
         ScryfallApiBaseAddress = ScryfallApiBaseAddress,
         CacheDuration = CacheDuration,
@@ -15,5 +18,5 @@ public class ScryfallApiClientConfig
         UseSlidingCacheExpiration = UseSlidingCacheExpiration
     };
 
-    public static ScryfallApiClientConfig GetDefault() => new ScryfallApiClientConfig();
+    public static ScryfallApiClientConfig Default => new();
 }

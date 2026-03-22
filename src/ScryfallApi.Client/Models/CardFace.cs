@@ -1,44 +1,73 @@
 ﻿using System.Text.Json.Serialization;
 
+using ScryfallApi.Client.Converters;
+
 namespace ScryfallApi.Client.Models;
 
-public class CardFace : BaseItem
+public record CardFace : BaseItem
 {
-    [JsonPropertyName("artist_id")]
-    public string ArtistId { get; set; }
-
+    /// <summary> The name of the illustrator of this card face. Newly spoiled cards may not have this field yet.</summary>
     [JsonPropertyName("artist")]
-    public string Artist { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Artist { get; init; }
 
+    /// <summary> The ID of the illustrator of this card face. Newly spoiled cards may not have this field yet.</summary>
+    [JsonPropertyName("artist_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public Guid? ArtistId { get; init; }
+
+    /// <summary> The mana value of this particular face, if the card is reversible. </summary>
     [JsonPropertyName("cmc")]
-    public decimal Cmc { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public decimal Cmc { get; init; }
 
+    /// <summary> The colors in this face's color indicator, if any. </summary>
     [JsonPropertyName("color_indicator")]
-    public string[] ColorIndicator { get; set; }
+    [JsonConverter(typeof(MagicColorConverter))]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Colors ColorIndicator { get; init; }
+
+    /// <summary> This face’s colors, if the game defines colors for the individual face of this card. </summary>
+    [JsonPropertyName("colors")]
+    [JsonConverter(typeof(MagicColorConverter))]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Colors Colors { get; init; }
+
+    /// <summary> This face's defense, if any. </summary>
+    [JsonPropertyName("defense")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Defense { get; init; }
+
+    /// <summary> The flavor text, if any. </summary>
+    [JsonPropertyName("flavor_text")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? FlavorText { get; init; }
 
     /// <summary>
-    /// This face’s colors.
+    /// A unique identifier for the card face artwork that remains consistent across reprints. Newly spoiled
+    /// cards may not have this field yet.
     /// </summary>
-    [JsonPropertyName("colors")]
-    public string[] Colors { get; set; }
-
-    [JsonPropertyName("flavor_name")]
-    public string FlavorName { get; set; }
-
-    [JsonPropertyName("flavor_text")]
-    public string FlavorText { get; set; }
-
     [JsonPropertyName("illustration_id")]
-    public string IllustrationId { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public Guid? IllustrationId { get; init; }
 
+    /// <summary>
+    /// An object providing URIs to imagery for this face, if this is a double-sided card. If this card
+    /// is not double-sided, then the image_uris property will be part of the parent object instead.
+    /// </summary>
     [JsonPropertyName("image_uris")]
-    public Dictionary<string, Uri> ImageUris { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public Dictionary<string, Uri>? ImageUris { get; init; } // TODO: Create an image_uris class
 
+    /// <summary> The layout of this card face, if the card is reversible. </summary>
     [JsonPropertyName("layout")]
-    public string Layout { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Layout { get; init; }
 
+    /// <summary> The face's loyalty, if any. </summary>
     [JsonPropertyName("loyalty")]
-    public string Loyalty { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Loyalty { get; init; }
 
     /// <summary>
     /// The mana cost for this card. This value will be any empty string "" if the cost is
@@ -46,52 +75,54 @@ public class CardFace : BaseItem
     /// are different values.
     /// </summary>
     [JsonPropertyName("mana_cost")]
-    public string ManaCost { get; set; }
+    public required string ManaCost { get; init; }
 
-    /// <summary>
-    /// The name of this particular face.
-    /// </summary>
+    /// <summary> The name of this particular face. </summary>
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public required string Name { get; init; }
 
+    /// <summary> The Oracle Id of this particular face, if the card is reversible. </summary>
     [JsonPropertyName("oracle_id")]
-    public string OracleId { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public Guid? OracleId { get; init; }
 
-    /// <summary>
-    /// The Oracle text for this face, if any.
-    /// </summary>
+    /// <summary> The Oracle text for this face, if any. </summary>
     [JsonPropertyName("oracle_text")]
-    public string OracleText { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? OracleText { get; init; }
 
-    /// <summary>
-    /// This card’s power, if any. Note that some cards have powers that are not numeric,
-    /// such as *.
-    /// </summary>
+    /// <summary> This card’s power, if any. Note that some cards have powers that are not numeric, such as <b>*</b>. </summary>
     [JsonPropertyName("power")]
-    public string Power { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Power { get; init; }
 
+    /// <summary> The localized name printed on this face, if any.</summary>
     [JsonPropertyName("printed_name")]
-    public string PrintedName { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PrintedName { get; init; }
 
+    /// <summary> The localized text printed on this face, if any.</summary>
     [JsonPropertyName("printed_text")]
-    public string PrintedText { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PrintedText { get; init; }
 
+    /// <summary> The localized type line printed on this face, if any. </summary>
     [JsonPropertyName("printed_type_line")]
-    public string PrintedTypeLine { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? PrintedTypeLine { get; init; }
 
-    /// <summary>
-    /// This card’s toughness, if any. Note that some cards have toughnesses that are not
-    /// numeric, such as *.
-    /// </summary>
+    /// <summary> This card’s toughness, if any. </summary>
     [JsonPropertyName("toughness")]
-    public string Toughness { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Toughness { get; init; }
 
-    /// <summary>
-    /// The type line of this particular face.
-    /// </summary>
+    /// <summary> The type line of this particular face. </summary>
     [JsonPropertyName("type_line")]
-    public string TypeLine { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? TypeLine { get; init; }
 
+    /// <summary> The watermark on this particular card face, if any. </summary>
     [JsonPropertyName("watermark")]
-    public string Watermark { get; set; }
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Watermark { get; init; }
 }
