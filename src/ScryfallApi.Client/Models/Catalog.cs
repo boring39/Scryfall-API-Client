@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record Catalog : BaseItem
+public record Catalog : BaseObject
 {
     /// <summary> A link to the current catalog on Scryfall's API. </summary>
     [JsonPropertyName("uri")]

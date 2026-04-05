@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record ErrorObject : BaseItem
+public record ErrorObject : BaseObject
 {
     /// <summary> An integer HTTP status code for this error. </summary>
     [JsonPropertyName("status")]

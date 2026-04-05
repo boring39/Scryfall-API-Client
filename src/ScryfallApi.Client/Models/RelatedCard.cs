@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ScryfallApi.Client.Models;
 
-public record RelatedCard : BaseItem
+public record RelatedCard : BaseObject
 {
     /// <summary> An unique ID for this card in Scryfall's database. </summary>
     [JsonPropertyName("id")]

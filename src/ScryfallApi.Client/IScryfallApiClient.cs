@@ -6,7 +6,7 @@ namespace ScryfallApi.Client;
 /// REST client for retrieving data from https://api.scryfall.com/. This software has no affiliation
 /// with Scryfall.com
 /// </summary>
-public interface IScryfallApiClient
+public interface IScryfallApiClient: IDisposable, IAsyncDisposable
 {
 
     ///<inheritdoc cref="ICards"/>

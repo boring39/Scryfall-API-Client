@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record BulkDataItem : BaseItem
+public sealed record BulkDataObject : BaseObject
 {
     /// <summary>A unique ID for this bulk item.</summary>
     [JsonPropertyName("id")]

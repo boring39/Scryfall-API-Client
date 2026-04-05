@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record ResultList<T> : BaseItem where T : BaseItem
+public record ResultList<T> : BaseObject where T : BaseObject
 {
     /// <summary> An array of the requested objects, in a specific order. </summary>
     [JsonPropertyName("data")]

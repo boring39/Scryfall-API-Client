@@ -9,7 +9,7 @@ namespace ScryfallApi.Client.Models;
 /// Card objects represent individual Magic: The Gathering cards that players could obtain and
 /// add to their collection (with a few minor exceptions).
 /// </summary>
-public record Card : BaseItem
+public record Card : BaseObject
 {
     #region Core Card Fields
 
@@ -239,7 +239,7 @@ public record Card : BaseItem
 
     /// <summary> The type line of this card. </summary>
     [JsonPropertyName("type_line")]
-    public required string TypeLine { get; init; }
+    public string? TypeLine { get; init; }
 
     #endregion Gameplay Fields
 
@@ -274,7 +274,7 @@ public record Card : BaseItem
 
     /// <summary> The Scryfall ID for the card back design present on this card. </summary>
     [JsonPropertyName("card_back_id")]
-    public required Guid CardBackId { get; init; }
+    public Guid? CardBackId { get; init; }
 
     /// <summary>
     /// The card's collector number. Note that collector numbers can contain non-numeric characters, such
@@ -358,7 +358,7 @@ public record Card : BaseItem
     /// eur_etched, and tix prices, as strings.
     /// </summary>
     [JsonPropertyName("prices")]
-    public required Price Prices { get; init; }
+    public required PricesObject Prices { get; init; }
 
     /// <summary> The localized name printed on this card, if any. </summary>
     [JsonPropertyName("printed_name")]

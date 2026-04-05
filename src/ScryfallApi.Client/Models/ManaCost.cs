@@ -4,7 +4,7 @@ using ScryfallApi.Client.Converters;
 
 namespace ScryfallApi.Client.Models;
 
-public record ManaCost : BaseItem
+public record ManaCost : BaseObject
 {
     /// <summary> The normalized cost, with correctly-ordered and wrapped mana symbols. </summary>
     [JsonPropertyName("cost")]

@@ -4,7 +4,7 @@ using ScryfallApi.Client.Converters;
 
 namespace ScryfallApi.Client.Models;
 
-public record CardFace : BaseItem
+public record CardFace : BaseObject
 {
     /// <summary> The name of the illustrator of this card face. Newly spoiled cards may not have this field yet.</summary>
     [JsonPropertyName("artist")]
@@ -18,19 +18,19 @@ public record CardFace : BaseItem
 
     /// <summary> The mana value of this particular face, if the card is reversible. </summary>
     [JsonPropertyName("cmc")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public decimal Cmc { get; init; }
 
     /// <summary> The colors in this face's color indicator, if any. </summary>
     [JsonPropertyName("color_indicator")]
     [JsonConverter(typeof(MagicColorConverter))]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Colors ColorIndicator { get; init; }
 
     /// <summary> This face’s colors, if the game defines colors for the individual face of this card. </summary>
     [JsonPropertyName("colors")]
     [JsonConverter(typeof(MagicColorConverter))]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public Colors Colors { get; init; }
 
     /// <summary> This face's defense, if any. </summary>

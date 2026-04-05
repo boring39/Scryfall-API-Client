@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record BaseItem
+public record BaseObject
 {
     [JsonPropertyName("object")]
     public required string ObjectType { get; init; }

@@ -2,7 +2,7 @@
 
 namespace ScryfallApi.Client.Models;
 
-public record SetObject : BaseItem
+public record SetObject : BaseObject
 {
     /// <summary> A unique ID for this set on Scryfall that will not change. </summary>
     [JsonPropertyName("id")]
@@ -24,7 +24,7 @@ public record SetObject : BaseItem
 
     /// <summary> The unique code for this set on Arena, which may differ from the regular code. </summary>
     [JsonPropertyName("tcgplayer_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int TcgPlayerId { get; init; }
 
     /// <summary> The English name of the set. </summary>
@@ -62,7 +62,7 @@ public record SetObject : BaseItem
 
     /// <summary> The denominator for the set's printed collector numbers. </summary>
     [JsonPropertyName("printed_size")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public int? PrintedSize { get; init; }
 
     /// <summary> True if this set was only released on Magic Online. </summary>

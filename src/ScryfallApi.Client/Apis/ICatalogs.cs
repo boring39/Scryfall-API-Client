@@ -14,13 +14,13 @@ public interface ICatalogs
     /// soon as a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListCardNames(CancellationToken cancellationToken = default);
+    Task<Catalog> GetCardNamesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a list of all canonical artist names in Scryfall’s database. This catalog won’t include duplicate,
     /// misspelled, or funny names for artists. Values are updated as soon as a new card is entered for spoiler seasons.
     /// </summary>
-    Task<Catalog> ListArtistNames(CancellationToken cancellationToken = default);
+    Task<Catalog> GetArtistNamesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all English words, of length 2 or more, that could appear in a card name.
@@ -28,90 +28,90 @@ public interface ICatalogs
     /// new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListWordBank(CancellationToken cancellationToken = default);
+    Task<Catalog> GetWordBankAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all Magic card supertypes. Values are updated as soon as a new card is entered
     /// for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListSuperTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetSuperTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all Magic card types. Values are updated as soon as a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListCardTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetCardTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all artifact types in Scryfall’s database. Values are updated as soon as a
     /// new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListArtifactTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetArtifactTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all Battle types in Scryfall’s database. Values are updated as soon as a new card is
     /// entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListBattleTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetBattleTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all creature types in Scryfall’s database. Values are updated as soon as
     /// a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListCreatureTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetCreatureTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all enchantment types in Scryfall’s database. Values are updated as soon as a
     /// new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListEnchantmentTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetEnchantmentTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all Land types in Scryfall’s database. Values are updated as soon as a new
     /// card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListLandTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetLandTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all Planeswalker types in Scryfall’s database. Values are updated as soon as
     /// a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListPlaneswalkerTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetPlaneswalkerTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all spell types in Scryfall’s database. Values are updated as soon as a new
     /// card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListSpellTypes(CancellationToken cancellationToken = default);
+    Task<Catalog> GetSpellTypesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all possible values for a creature or vehicle’s power in Scryfall’s database.
     /// Values are updated as soon as a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListPowers(CancellationToken cancellationToken = default);
+    Task<Catalog> GetPowersAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all possible values for a creature or vehicle’s toughness in Scryfall’s database.
     /// Values are updated as soon as a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListToughnesses(CancellationToken cancellationToken = default);
+    Task<Catalog> GetToughnessesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all possible values for a Planeswalker’s loyalty in Scryfall’s database. Values
     /// are updated as soon as a new card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListLoyalties(CancellationToken cancellationToken = default);
+    Task<Catalog> GetLoyaltiesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all keyword abilities in Scryfall’s database. Values are updated as soon as a new card
@@ -119,7 +119,7 @@ public interface ICatalogs
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <Catalog></returns>
-    Task<Catalog> ListKeywordAbilities(CancellationToken cancellationToken = default);
+    Task<Catalog> GetKeywordAbilitiesAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all keyword actions in Scryfall’s database. Values are updated as soon as a new card is
@@ -127,23 +127,23 @@ public interface ICatalogs
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<Catalog> ListKeywordActions(CancellationToken cancellationToken = default);
+    Task<Catalog> GetKeywordActionsAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all ability words in Scryfall’s database. Values are updated as soon as a new card is
     /// entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListAbilityWords(CancellationToken cancellationToken = default);
+    Task<Catalog> GetAbilityWordsAsync(CancellationToken cancellationToken = default);
 
     /// <summary> Returns a Catalog of all flavor words in Scryfall’s database. </summary>
     /// <returns></returns>
-    Task<Catalog> ListFlavorWords(CancellationToken cancellationToken = default);
+    Task<Catalog> GetFlavorWordsAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog of all card watermarks in Scryfall’s database. Values are updated as soon as a new
     /// card is entered for spoiler seasons.
     /// </summary>
     /// <returns></returns>
-    Task<Catalog> ListWatermarks(CancellationToken cancellationToken = default);
+    Task<Catalog> GetWatermarksAsync(CancellationToken cancellationToken = default);
 }

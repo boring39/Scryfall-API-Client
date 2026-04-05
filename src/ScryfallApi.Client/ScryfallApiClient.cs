@@ -7,6 +7,8 @@ namespace ScryfallApi.Client;
 ///<inheritdoc cref="IScryfallApiClient"/>
 public class ScryfallApiClient : IScryfallApiClient
 {
+    private bool _disposed = false;
+    private readonly BaseRestService _baseRestService;
     private readonly Lazy<ICards> _cards;
     ///<inheritdoc cref="ICards"/>
     public ICards Cards => _cards.Value;
@@ -42,11 +44,32 @@ public class ScryfallApiClient : IScryfallApiClient
             clientConfig.EnableCaching = cache is not null;
         }
 
-        BaseRestService restService = new(httpClient, clientConfig, cache);
-        _cards = new Lazy<ICards>(() => new Cards(restService));
-        _catalogs = new Lazy<ICatalogs>(() => new Catalogs(restService));
-        _sets = new Lazy<ISets>(() => new Sets(restService));
-        _symbology = new Lazy<ISymbology>(() => new Symbology(restService));
-        _bulkData = new Lazy<IBulkData>(() => new BulkData(restService));
+        _baseRestService = new(httpClient, clientConfig, cache);
+        _cards = new Lazy<ICards>(() => new Cards(_baseRestService));
+        _catalogs = new Lazy<ICatalogs>(() => new Catalogs(_baseRestService));
+        _sets = new Lazy<ISets>(() => new Sets(_baseRestService));
+        _symbology = new Lazy<ISymbology>(() => new Symbology(_baseRestService));
+        _bulkData = new Lazy<IBulkData>(() => new BulkData(_baseRestService));
+    }
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    private void Dispose(bool disposing)
+    {
+        if (_disposed) return;
+        if (disposing)
+        {
+            _baseRestService.Dispose();
+        }
+
+        _disposed = true;
+    }
+    public async ValueTask DisposeAsync()
+    {
+        await _baseRestService.DisposeAsync().ConfigureAwait(false);
+        Dispose(disposing: false);
+        GC.SuppressFinalize(this);
     }
 }

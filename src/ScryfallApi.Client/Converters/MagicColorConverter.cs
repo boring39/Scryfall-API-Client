@@ -5,7 +5,7 @@ using ScryfallApi.Client.Models;
 
 namespace ScryfallApi.Client.Converters;
 
-public class MagicColorConverter : JsonConverter<Colors>
+internal class MagicColorConverter : JsonConverter<Colors>
 {
     private static readonly Dictionary<string, Colors> FromCode = new()
     {
@@ -14,7 +14,8 @@ public class MagicColorConverter : JsonConverter<Colors>
         ["B"] = Colors.Black,
         ["R"] = Colors.Red,
         ["G"] = Colors.Green,
-        ["C"] = Colors.Colorless
+        ["C"] = Colors.Colorless,
+        ["T"] = Colors.Tap,
     };
 
     private static readonly Dictionary<Colors, string> ToCode = FromCode.ToDictionary(x => x.Value, x => x.Key);

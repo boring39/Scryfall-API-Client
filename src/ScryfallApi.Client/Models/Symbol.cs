@@ -4,7 +4,7 @@ using ScryfallApi.Client.Converters;
 
 namespace ScryfallApi.Client.Models;
 
-public record CardSymbol : BaseItem, IEquatable<string>, IComparable, IComparable<string>
+public record CardSymbol : BaseObject, IEquatable<string>, IComparable, IComparable<string>
 {
     /// <summary>
     /// The plaintext symbol. Often surrounded with curly braces {}. Note that not all symbols

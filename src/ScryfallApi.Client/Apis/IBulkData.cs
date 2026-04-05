@@ -9,20 +9,15 @@ public interface IBulkData
     /// Get information on bulk data collections and download links
     /// </summary>
     /// <returns></returns>
-    Task<ResultList<BulkDataItem>> Get();
+    Task<ResultList<BulkDataObject>> GetAllAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Return just the items that have been updated since the date and time provided
+    /// Returns a single Bulk Data object with the given id.
     /// </summary>
-    /// <param name="updatedSince"></param>
-    /// <returns></returns>
-    Task<ICollection<BulkDataItem>> Get(DateTimeOffset updatedSince);
+    Task<BulkDataObject> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Return just the item type specified that has been updated since the date and time provided
+    /// Returns a single Bulk Data object with the given type.
     /// </summary>
-    /// <param name="updatedSince"></param>
-    /// <param name="bulkDataType"></param>
-    /// <returns></returns>
-    Task<BulkDataItem> Get(DateTimeOffset updatedSince, string bulkDataType);
+    Task<BulkDataObject> GetByTypeAsync(BulkDataType type, CancellationToken cancellationToken = default);
 }
