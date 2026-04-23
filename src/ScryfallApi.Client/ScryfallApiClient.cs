@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 
 using ScryfallApi.Client.Apis;
+using ScryfallApi.Client.Apis.Concrete;
 
 namespace ScryfallApi.Client;
 

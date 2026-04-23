@@ -19,8 +19,26 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <DebugType>embedded</DebugType>
+    <Optimize>true</Optimize>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+  <!-- Release configuration settings -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>none</DebugType>
+    <OutputPath>bin\Release\</OutputPath>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
   <!--<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">-->
   <!--<PropertyGroup>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -31,6 +49,10 @@
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.5" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.5" />
     <PackageReference Include="System.Threading.RateLimiting" Version="10.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScryfallApi\ScryfallApi.csproj" />
   </ItemGroup>
 
 </Project>

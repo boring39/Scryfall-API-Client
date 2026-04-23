@@ -3,9 +3,14 @@
     <File Path=".gitignore" />
     <File Path="README.md" />
   </Folder>
-  <Folder Name="/src/" />
+  <Folder Name="/src/">
+    <Project Path="src/ScryfallApi/ScryfallApi.csproj" />
+    <Project Path="src/ScryfallApi.Client/ScryfallApi.Client.csproj" />
+  </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/ScryfallApi.Client.Tests/ScryfallApi.Client.Tests.csproj" />
   </Folder>
-  <Project Path="src/ScryfallApi.Client/ScryfallApi.Client.csproj" />
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/ScryfallApi.Models.Benchmarks/ScryfallApi.Models.Benchmarks.csproj" />
+  </Folder>
 </Solution>

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\ScryfallApi.Client\ScryfallApi.Client.csproj" />
+    <ProjectReference Include="..\..\src\ScryfallApi\ScryfallApi.csproj" />
   </ItemGroup>
 
 </Project>

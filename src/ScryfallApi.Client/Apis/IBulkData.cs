@@ -1,4 +1,4 @@
-﻿using ScryfallApi.Client.Models;
+﻿using ScryfallApi.Models;
 
 namespace ScryfallApi.Client.Apis;
 
@@ -9,15 +9,18 @@ public interface IBulkData
     /// Get information on bulk data collections and download links
     /// </summary>
     /// <returns></returns>
-    Task<ResultList<BulkDataObject>> GetAllAsync(CancellationToken cancellationToken = default);
+    Task<ListObject<BulkData>> GetAllAsync(CancellationToken cancellationToken = default);
+
+    /// <summary> Stream all bulk data objects asynchronously across any paginated result pages. </summary>
+    IAsyncEnumerable<BulkData> GetAllAsyncEnumerable(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a single Bulk Data object with the given id.
     /// </summary>
-    Task<BulkDataObject> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<BulkData> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a single Bulk Data object with the given type.
     /// </summary>
-    Task<BulkDataObject> GetByTypeAsync(BulkDataType type, CancellationToken cancellationToken = default);
+    Task<BulkData> GetByTypeAsync(BulkDataType type, CancellationToken cancellationToken = default);
 }

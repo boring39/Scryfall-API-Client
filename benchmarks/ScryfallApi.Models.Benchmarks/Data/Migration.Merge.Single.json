@@ -1,0 +1,18 @@
+{
+    "object": "migration",
+    "id": "505b0a58-1052-4588-abb4-24223e490e71",
+    "uri": "https://api.scryfall.com/migrations/505b0a58-1052-4588-abb4-24223e490e71",
+    "performed_at": "2026-04-17",
+    "migration_strategy": "merge",
+    "old_scryfall_id": "89d5d2b5-3769-4341-b84e-03771dbb7491",
+    "new_scryfall_id": "2b73d294-6ab1-4051-9b0f-d8e335d37674",
+    "note": "No longer rebalanced",
+    "metadata": {
+    "id": "89d5d2b5-3769-4341-b84e-03771dbb7491",
+    "lang": "en",
+    "name": "A-Unholy Heat",
+    "set_code": "mh2",
+    "oracle_id": "8582d676-54e0-41cc-a0f6-305093155458",
+    "collector_number": "A-145"
+    }
+}

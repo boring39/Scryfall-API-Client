@@ -1,4 +1,4 @@
-﻿using ScryfallApi.Client.Models;
+﻿using ScryfallApi.Models;
 
 namespace ScryfallApi.Client.Apis;
 

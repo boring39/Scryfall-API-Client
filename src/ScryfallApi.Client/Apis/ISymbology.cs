@@ -1,4 +1,4 @@
-﻿using ScryfallApi.Client.Models;
+﻿using ScryfallApi.Models;
 
 namespace ScryfallApi.Client.Apis;
 
@@ -12,7 +12,10 @@ public interface ISymbology
     /// Retrieve all card symbols
     /// </summary>
     /// <returns></returns>
-    Task<ResultList<CardSymbol>> GetAsync(CancellationToken cancellationToken = default);
+    Task<ListObject<CardSymbol>> GetAsync(CancellationToken cancellationToken = default);
+
+    /// <summary> Stream all card symbols asynchronously across any paginated result pages. </summary>
+    IAsyncEnumerable<CardSymbol> GetAllSymbolsAsyncEnumerable(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parses the given mana cost parameter and returns Scryfall’s interpretation.

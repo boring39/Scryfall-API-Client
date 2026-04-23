@@ -1,0 +1,17 @@
+{
+    "object": "migration",
+    "id": "18e74c8a-4338-455f-b9c6-9793fc5e3c1a",
+    "uri": "https://api.scryfall.com/migrations/18e74c8a-4338-455f-b9c6-9793fc5e3c1a",
+    "performed_at": "2026-04-11",
+    "migration_strategy": "delete",
+    "old_scryfall_id": "b747eb29-da49-4feb-a651-9b83d43acc91",
+    "note": "Mistaken entry",
+    "metadata": {
+    "id": "b747eb29-da49-4feb-a651-9b83d43acc91",
+    "lang": "en",
+    "name": "Illusion // Saproling",
+    "set_code": "tsoc",
+    "oracle_id": "8d39c8ca-df68-49cf-8e78-b38ccdad6c68",
+    "collector_number": "9999"
+    }
+}
