@@ -1,6 +1,6 @@
 ﻿namespace ScryfallApi.Models;
 
-public record Error : ScryfallObject
+public record ScryfallError : ScryfallObject
 {
     /// <summary> An integer HTTP status code for this error. </summary>
     public int Status { get; init; }
@@ -22,5 +22,5 @@ public record Error : ScryfallObject
     /// If your input also generated non-failure warnings, they will be provided as
     /// human-readable strings in this array.
     /// </summary>
-    public IReadOnlyList<string>? Warnings { get; init; }
+    public string[]? Warnings { get; init; }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ScryfallApi.Models;
 
-public sealed record BulkData : ScryfallObject
+public sealed record ScryfallBulkData : ScryfallObject
 {
     /// <summary>A unique ID for this bulk item.</summary>
     public Guid Id { get; init; }

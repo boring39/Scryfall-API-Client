@@ -1,6 +1,6 @@
 ﻿namespace ScryfallApi.Models;
 
-public record CardSymbol : ScryfallObject
+public record ScryfallCardSymbol : ScryfallObject
 {
     /// <summary>
     /// The plaintext symbol. Often surrounded with curly braces {}. Note that not all symbols
@@ -23,10 +23,10 @@ public record CardSymbol : ScryfallObject
     /// API never writes symbols backwards in other responses. This field is provided for informational
     /// purposes.
     /// </summary>
-    public bool IsTransposable { get; init; }
+    public bool Transposable { get; init; }
 
     /// <summary> True if this is a mana symbol. </summary>
-    public bool IsManaSymbol { get; init; }
+    public bool RepresentsMana { get; init; }
 
     /// <summary>
     /// A decimal number representing this symbol’s mana value (also knowns as the converted mana cost). Note that mana
@@ -41,10 +41,10 @@ public record CardSymbol : ScryfallObject
     public bool AppearsInManaCosts { get; init; }
 
     /// <summary> True if this symbol is only used on funny cards or Un-cards. </summary>
-    public bool IsFunny { get; init; }
+    public bool Funny { get; init; }
 
     /// <summary>  An array of colors that this symbol represents. </summary>
-    public Colors Colors { get; init; }
+    public required ScryfallColors Colors { get; init; }
 
     /// <summary>
     /// True if the symbol is a hybrid mana symbol. Note that monocolor Phyrexian symbols aren't considered hybrid.
@@ -58,7 +58,7 @@ public record CardSymbol : ScryfallObject
     /// An array of plaintext versions of this symbol that Gatherer uses on old cards to describe original printed text.
     /// For example: {W} has ["oW", "ooW"] as alternates.
     /// </summary>
-    public string? GathererAlternates { get; init; }
+    public IReadOnlyList<string>? GathererAlternates { get; init; }
 
     /// <summary> A URI to an SVG image of this symbol on Scryfall's CDNs. </summary>
     public Uri? SvgUri { get; init; }

@@ -1,8 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace ScryfallApi.Models;
 
-namespace ScryfallApi.Models;
-
-public record Set : ScryfallObject
+public record ScryfallSet : ScryfallObject
 {
     /// <summary> A unique ID for this set on Scryfall that will not change. </summary>
     public Guid Id { get; init; }
@@ -17,7 +15,7 @@ public record Set : ScryfallObject
     public string? ArenaCode { get; init; }
 
     /// <summary> The unique code for this set on Arena, which may differ from the regular code. </summary>
-    public int? TcgPlayerId { get; init; }
+    public int? TcgplayerId { get; init; }
 
     /// <summary> The English name of the set. </summary>
     public required string Name { get; init; }
@@ -26,8 +24,7 @@ public record Set : ScryfallObject
     public required SetType SetType { get; init; }
 
     /// <summary> The date the set was released (in GMT-8 Pacific time). Not all sets have a known release date. </summary>
-    [JsonPropertyName("released_at")]
-    public DateTime? ReleaseDate { get; init; }
+    public DateOnly? ReleasedAt { get; init; }
 
     /// <summary> The block code for this set, if any. </summary>
     public string? BlockCode { get; init; }
@@ -45,16 +42,13 @@ public record Set : ScryfallObject
     public int? PrintedSize { get; init; }
 
     /// <summary> True if this set was only released on Magic Online. </summary>
-    [JsonPropertyName("digital")]
-    public bool IsDigital { get; init; }
+    public bool Digital { get; init; }
 
     /// <summary> True if this set contains only foil cards. </summary>
-    [JsonPropertyName("foil_only")]
-    public bool IsFoilOnly { get; init; }
+    public bool FoilOnly { get; init; }
 
     /// <summary> True if this set contains only nonfoil cards. </summary>
-    [JsonPropertyName("nonfoil_only")]
-    public bool IsNonfoilOnly { get; init; }
+    public bool NonfoilOnly { get; init; }
 
     /// <summary> A link to this set's permapage on Scryfall's website. </summary>
     public required Uri ScryfallUri { get; init; }

@@ -1,6 +1,6 @@
 ﻿namespace ScryfallApi.Models;
 
-public record Catalog : ScryfallObject
+public record ScryfallCatalog : ScryfallObject
 {
     /// <summary> A link to the current catalog on Scryfall's API. </summary>
     public required Uri Uri { get; init; }
@@ -9,5 +9,5 @@ public record Catalog : ScryfallObject
     public required int TotalValues { get; init; }
 
     /// <summary> An array of datapoints, as strings. </summary>
-    public required IReadOnlyList<string> Data { get; init; }
+    public required string[] Data { get; init; }
 }

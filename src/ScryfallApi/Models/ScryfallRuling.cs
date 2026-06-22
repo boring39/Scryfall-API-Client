@@ -1,6 +1,6 @@
 namespace ScryfallApi.Models;
 
-public record Ruling : ScryfallObject
+public record ScryfallRuling : ScryfallObject
 {
     /// <summary> The Oracle ID of the card this ruling is associated with. </summary>
     public required Guid OracleId { get; init; }
