@@ -13,40 +13,40 @@ public interface ICards
 {
     /// <summary> Fetch a card at random. </summary>
     /// <returns></returns>
-    Task<CardObject> GetRandomAsync(CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetRandomAsync(CancellationToken cancellationToken = default);
 
     /// <summary> Get a page worth of cards </summary>
     /// <param name="page"></param>
     /// <returns></returns>
-    Task<ListObject<CardObject>> GetPage(int page, CancellationToken cancellationToken = default);
+    Task<ScryfallList<ScryfallCard>> GetPage(int page, CancellationToken cancellationToken = default);
 
     /// <summary> Search for cards with a sort option </summary>
     /// <param name="query"></param>
     /// <param name="page"></param>
     /// <param name="sort"></param>
     /// <returns></returns>
-    Task<ListObject<CardObject>> Search(string query, int page, SortOrder sort, CancellationToken cancellationToken = default);
+    Task<ScryfallList<ScryfallCard>> Search(string query, int page, SortOrder sort, CancellationToken cancellationToken = default);
 
     /// <summary> Search for cards using the full search options available </summary>
     /// <param name="query"></param>
     /// <param name="page"></param>
     /// <param name="options"></param>
     /// <returns></returns>
-    Task<ListObject<CardObject>> Search(string query, int page, SearchOptions options, CancellationToken cancellationToken = default);
+    Task<ScryfallList<ScryfallCard>> Search(string query, int page, SearchOptions options, CancellationToken cancellationToken = default);
 
     /// <summary> Stream all matching cards from the search result pages asynchronously. </summary>
-    IAsyncEnumerable<CardObject> SearchAllAsync(string query, SearchOptions options = default, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<ScryfallCard> SearchAllAsync(string query, SearchOptions options = default, CancellationToken cancellationToken = default);
 
     /// <summary> Stream all matching cards from the search result pages asynchronously, using sort semantics. </summary>
-    IAsyncEnumerable<CardObject> SearchAllAsync(string query, SortOrder sort, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<ScryfallCard> SearchAllAsync(string query, SortOrder sort, CancellationToken cancellationToken = default);
 
     /// <summary> Stream all matching cards from the search result pages synchronously. </summary>
-    IEnumerable<CardObject> SearchAll(string query, SearchOptions options = default, CancellationToken cancellationToken = default);
+    IEnumerable<ScryfallCard> SearchAll(string query, SearchOptions options = default, CancellationToken cancellationToken = default);
 
     /// <summary> Stream all matching cards from the search result pages synchronously, using sort semantics. </summary>
-    IEnumerable<CardObject> SearchAll(string query, SortOrder sort, CancellationToken cancellationToken = default);
+    IEnumerable<ScryfallCard> SearchAll(string query, SortOrder sort, CancellationToken cancellationToken = default);
 
-    Task<CardObject> GetNamedCardAsync(NamedCardQuery query, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetNamedCardAsync(NamedCardQuery query, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Catalog object containing up to 20 full English card names that could be autocompletions of the given string parameter.
@@ -56,9 +56,9 @@ public interface ICards
     /// If <paramref name="q"/> is less than 2 characters long, or if no names match, the Catalog will contain 0 items (instead of returning any errors).
     /// </summary>
     /// <param name="q"> The string to autocomplete. </param>
-    Task<Catalog> GetAutocompleteAsync(string q, CancellationToken cancellationToken = default);
+    Task<ScryfallCatalog> GetAutocompleteAsync(string q, CancellationToken cancellationToken = default);
 
-    Task<ListObject<CardObject>> GetCollectionAsync(IEnumerable<CardIdentifier> identifiers, CancellationToken cancellationToken = default);
+    Task<ScryfallList<ScryfallCard>> GetCollectionAsync(IEnumerable<CardIdentifier> identifiers, CancellationToken cancellationToken = default);
 
     // :Code /:number / :lang
 
@@ -66,28 +66,28 @@ public interface ICards
     /// Returns a single card with the given Multiverse ID. If the card has multiple multiverse IDs,
     /// this method can find either of them.
     /// </summary>
-    Task<CardObject> GetByMultiverseIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByMultiverseIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a single card with the given MTGO ID (also known as the Catalog ID). The ID can either be the card’s
     /// mtgo_id or its mtgo_foil_id.
     /// </summary>
-    Task<CardObject> GetByMtgoIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByMtgoIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary> Returns a single card with the given Magic: The Gathering Arena ID.</summary>
-    Task<CardObject> GetByArenaIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByArenaIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a single card with the given tcgplayer_id or tcgplayer_etched_id, also known as the productId on TCGplayer’s API.
     /// </summary>
-    Task<CardObject> GetByTcgPlayerIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByTcgPlayerIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a single card with the given cardmarket_id, also known as the idProduct" or the
     /// Product ID on Cardmarket’s APIs.
     /// </summary>
-    Task<CardObject> GetByCardmarketIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByCardmarketIdAsync(int id, CancellationToken cancellationToken = default);
 
     ///<summary> Returns a single card with the given Scryfall ID. </summary>
-    Task<CardObject> GetByScryfallIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<ScryfallCard> GetByScryfallIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

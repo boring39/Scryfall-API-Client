@@ -3,7 +3,7 @@
 namespace ScryfallApi.Client.Apis.Concrete;
 
 ///<inheritdoc cref="ICatalogs"/>
-internal class Catalogs : ICatalogs
+internal sealed class Catalogs : ICatalogs
 {
     private const string CatalogEnpoint = "/catalog";
     private static readonly Uri CardNamesUri = new($"{CatalogEnpoint}/card-names", UriKind.Relative);
@@ -34,44 +34,44 @@ internal class Catalogs : ICatalogs
         _restService = restService;
     }
 
-    public Task<Catalog> GetCardNamesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(CardNamesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetWordBankAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(WordBankUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetCreatureTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(CreatureTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetPlaneswalkerTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(PlaneswalkerTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetLandTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(LandTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetSpellTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(SpellTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetEnchantmentTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(EnchantmentTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetArtifactTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(ArtifactTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetPowersAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(PowersUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetToughnessesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(ToughnessesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetLoyaltiesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(LoyaltiesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetWatermarksAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(WatermarksUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetArtistNamesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(ArtistNamesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetSuperTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(SuperTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetCardTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(CardTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetBattleTypesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(BattleTypesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetKeywordAbilitiesAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(KeywordAbilitiesUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetKeywordActionsAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(KeywordActionsUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetAbilityWordsAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(AbilityWordsUri, cancellationToken: cancellationToken);
-    public Task<Catalog> GetFlavorWordsAsync(CancellationToken cancellationToken = default)
-        => _restService.GetAsync<Catalog>(FlavorWordsUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetCardNamesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(CardNamesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetWordBankAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(WordBankUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetCreatureTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(CreatureTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetPlaneswalkerTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(PlaneswalkerTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetLandTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(LandTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetSpellTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(SpellTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetEnchantmentTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(EnchantmentTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetArtifactTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(ArtifactTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetPowersAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(PowersUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetToughnessesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(ToughnessesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetLoyaltiesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(LoyaltiesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetWatermarksAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(WatermarksUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetArtistNamesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(ArtistNamesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetSuperTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(SuperTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetCardTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(CardTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetBattleTypesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(BattleTypesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetKeywordAbilitiesAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(KeywordAbilitiesUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetKeywordActionsAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(KeywordActionsUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetAbilityWordsAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(AbilityWordsUri, cancellationToken: cancellationToken);
+    public Task<ScryfallCatalog> GetFlavorWordsAsync(CancellationToken cancellationToken = default)
+        => _restService.GetAsync<ScryfallCatalog>(FlavorWordsUri, cancellationToken: cancellationToken);
 }

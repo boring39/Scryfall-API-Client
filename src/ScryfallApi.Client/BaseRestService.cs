@@ -11,7 +11,7 @@ namespace ScryfallApi.Client;
 
 internal sealed class BaseRestService : IDisposable, IAsyncDisposable
 {
-    private bool _disposed = false;
+    private bool _disposed;
     private readonly HttpClient _httpClient;
     private readonly ScryfallApiClientConfig _clientConfig;
     private readonly IMemoryCache? _cache;
@@ -102,7 +102,7 @@ internal sealed class BaseRestService : IDisposable, IAsyncDisposable
         if (obj.Object.Equals("error", StringComparison.OrdinalIgnoreCase))
         {
             jsonStream.Position = 0;
-            Error error = await JsonSerializer.DeserializeAsync<Error>(jsonStream, cancellationToken: cancellationToken).ConfigureAwait(false) ?? throw new InvalidDataException(); // TODO: Improve this error handling
+            ScryfallError error = await JsonSerializer.DeserializeAsync<ScryfallError>(jsonStream, cancellationToken: cancellationToken).ConfigureAwait(false) ?? throw new InvalidDataException(); // TODO: Improve this error handling
             throw new ScryfallApiException(error.Details)
             {
                 ResponseStatusCode = response.StatusCode,
@@ -121,17 +121,17 @@ internal sealed class BaseRestService : IDisposable, IAsyncDisposable
 
     }
 
-    internal async Task<ListObject<T>> GetListAsync<T>(Uri uri, bool useCache = true, CancellationToken cancellationToken = default)
+    internal async Task<ScryfallList<T>> GetListAsync<T>(Uri uri, bool useCache = true, CancellationToken cancellationToken = default)
         where T : ScryfallObject
     {
-        ListObject<T> list = await GetAsync<ListObject<T>>(uri, useCache, cancellationToken).ConfigureAwait(false);
+        ScryfallList<T> list = await GetAsync<ScryfallList<T>>(uri, useCache, cancellationToken).ConfigureAwait(false);
         return list with { FetchNextPage = (nextPage, ct) => GetListAsync<T>(nextPage, useCache, ct) };
     }
 
     internal async IAsyncEnumerable<T> GetPagedAsync<T>(Uri uri, [EnumeratorCancellation] CancellationToken cancellationToken = default)
         where T : ScryfallObject
     {
-        ListObject<T> page = await GetListAsync<T>(uri, true, cancellationToken).ConfigureAwait(false);
+        ScryfallList<T> page = await GetListAsync<T>(uri, true, cancellationToken).ConfigureAwait(false);
 
         while (true)
         {
@@ -153,7 +153,7 @@ internal sealed class BaseRestService : IDisposable, IAsyncDisposable
     internal IEnumerable<T> GetPaged<T>(Uri uri, CancellationToken cancellationToken = default)
         where T : ScryfallObject
     {
-        ListObject<T> page = GetListAsync<T>(uri, true, cancellationToken).GetAwaiter().GetResult();
+        ScryfallList<T> page = GetListAsync<T>(uri, true, cancellationToken).GetAwaiter().GetResult();
 
         while (true)
         {
@@ -197,9 +197,9 @@ internal sealed class BaseRestService : IDisposable, IAsyncDisposable
     {
         RateLimiter limiter = GetLimiterFor(request.RequestUri!.ToString());
 
-        using RateLimitLease lease = await limiter.AcquireAsync(1, cancellationToken);
+        using RateLimitLease lease = await limiter.AcquireAsync(1, cancellationToken).ConfigureAwait(false);
 
-        HttpResponseMessage response = await _httpClient.SendAsync(request, cancellationToken);
+        HttpResponseMessage response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
         if (response.StatusCode == System.Net.HttpStatusCode.TooManyRequests)
         {

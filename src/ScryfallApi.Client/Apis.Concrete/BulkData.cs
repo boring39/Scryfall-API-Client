@@ -3,7 +3,7 @@
 namespace ScryfallApi.Client.Apis.Concrete;
 
 ///<inheritdoc cref="IBulkData"/>
-internal class BulkData : IBulkData
+internal sealed class BulkData : IBulkData
 {
     private const string BaseEndpoint = "/bulk-data";
     private static readonly Uri BaseEndpointUri = new(BaseEndpoint, UriKind.Relative);
@@ -11,19 +11,19 @@ internal class BulkData : IBulkData
 
     internal BulkData(BaseRestService restService) => _restService = restService;
 
-    public Task<ListObject<ScryfallApi.Models.BulkData>> GetAllAsync(CancellationToken cancellationToken = default)
-        => _restService.GetListAsync<ScryfallApi.Models.BulkData>(BaseEndpointUri, cancellationToken: cancellationToken);
+    public Task<ScryfallList<ScryfallBulkData>> GetAllAsync(CancellationToken cancellationToken = default)
+        => _restService.GetListAsync<ScryfallBulkData>(BaseEndpointUri, cancellationToken: cancellationToken);
 
-    public IAsyncEnumerable<ScryfallApi.Models.BulkData> GetAllAsyncEnumerable(CancellationToken cancellationToken = default)
-        => _restService.GetPagedAsync<ScryfallApi.Models.BulkData>(BaseEndpointUri, cancellationToken);
+    public IAsyncEnumerable<ScryfallBulkData> GetAllAsyncEnumerable(CancellationToken cancellationToken = default)
+        => _restService.GetPagedAsync<ScryfallBulkData>(BaseEndpointUri, cancellationToken);
 
-    public Task<ScryfallApi.Models.BulkData> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public Task<ScryfallBulkData> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         Uri uri = new($"{BaseEndpoint}/{id}", UriKind.Relative);
-        return _restService.GetAsync<ScryfallApi.Models.BulkData>(uri, cancellationToken: cancellationToken);
+        return _restService.GetAsync<ScryfallBulkData>(uri, cancellationToken: cancellationToken);
     }
 
-    public Task<ScryfallApi.Models.BulkData> GetByTypeAsync(BulkDataType type, CancellationToken cancellationToken = default)
+    public Task<ScryfallBulkData> GetByTypeAsync(BulkDataType type, CancellationToken cancellationToken = default)
     {
         string endpoint = type switch
         {
@@ -36,6 +36,6 @@ internal class BulkData : IBulkData
         };
 
         Uri uri = new($"{BaseEndpoint}/{endpoint}", UriKind.Relative);
-        return _restService.GetAsync<ScryfallApi.Models.BulkData>(uri, cancellationToken: cancellationToken);
+        return _restService.GetAsync<ScryfallBulkData>(uri, cancellationToken: cancellationToken);
     }
 }

@@ -16,11 +16,11 @@ public class Program
         BenchmarkRunner.Run(
         [
             typeof(MigrationBenchmarks),
-        // typeof(CardBenchmarks),
-        // typeof(LayoutDispatchBenchmarks),
-        // typeof(JsonDocumentBenchmarks),
-        // typeof(CardFaceBenchmarks),
-        // typeof(ScalingBenchmarks)
+        typeof(CardBenchmarks),
+        typeof(LayoutDispatchBenchmarks),
+        typeof(JsonDocumentBenchmarks),
+        typeof(CardFaceBenchmarks),
+        typeof(ScalingBenchmarks)
         ], config);
     }
 }

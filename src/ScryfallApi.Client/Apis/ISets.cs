@@ -8,23 +8,23 @@ namespace ScryfallApi.Client.Apis;
 /// </summary>
 public interface ISets
 {
-    /// <summary> Returns a <see cref="ListObject">List Object</see> of all <see cref="Set">Sets</see> on Scryfall. </summary>
-    Task<ListObject<Set>> GetAllSetsAsync(CancellationToken cancellationToken = default);
+    /// <summary> Returns a <see cref="ListObject">List Object</see> of all <see cref="ScryfallSet">Sets</see> on Scryfall. </summary>
+    Task<ScryfallList<ScryfallSet>> GetAllSetsAsync(CancellationToken cancellationToken = default);
 
     /// <summary> Stream all sets asynchronously across any paginated result pages. </summary>
-    IAsyncEnumerable<Set> GetAllSetsAsyncEnumerable(CancellationToken cancellationToken = default);
+    IAsyncEnumerable<ScryfallSet> GetAllSetsAsyncEnumerable(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Returns a Set with the given set code. The code can be either the code or the mtgo_code for the set.
     /// </summary>
     /// <param name="setCode">The three to five-letter set code.</param>
-    Task<Set> GetSetByCodeAsync(string setCode, CancellationToken cancellationToken = default);
+    Task<ScryfallSet> GetSetByCodeAsync(string setCode, CancellationToken cancellationToken = default);
 
     /// <summary> Returns a Set with the given tcgplayer_id, also known as the groupId on TCGplayer’s API. </summary>
     /// <param name="id">The tcgplayer_id or groupId.</param>
-    Task<Set> GetSetByTcgPlayerIdAsync(int id, CancellationToken cancellationToken = default);
+    Task<ScryfallSet> GetSetByTcgPlayerIdAsync(int id, CancellationToken cancellationToken = default);
 
     /// <summary> Returns a Set with the given Scryfall id. </summary>
     /// <param name="id">The Scryfall ID</param>
-    Task<Set> GetSetByScryfallIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<ScryfallSet> GetSetByScryfallIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

@@ -8,7 +8,7 @@
     <Project Path="src/ScryfallApi.Client/ScryfallApi.Client.csproj" />
   </Folder>
   <Folder Name="/tests/">
-    <Project Path="tests/ScryfallApi.Client.Tests/ScryfallApi.Client.Tests.csproj" />
+    <Project Path="tests/ScryfallApi.Models.Tests/ScryfallApi.Models.Tests.csproj" />
   </Folder>
   <Folder Name="/benchmarks/">
     <Project Path="benchmarks/ScryfallApi.Models.Benchmarks/ScryfallApi.Models.Benchmarks.csproj" />

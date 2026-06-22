@@ -12,10 +12,10 @@ public interface ISymbology
     /// Retrieve all card symbols
     /// </summary>
     /// <returns></returns>
-    Task<ListObject<CardSymbol>> GetAsync(CancellationToken cancellationToken = default);
+    Task<ScryfallList<ScryfallCardSymbol>> GetAsync(CancellationToken cancellationToken = default);
 
     /// <summary> Stream all card symbols asynchronously across any paginated result pages. </summary>
-    IAsyncEnumerable<CardSymbol> GetAllSymbolsAsyncEnumerable(CancellationToken cancellationToken = default);
+    IAsyncEnumerable<ScryfallCardSymbol> GetAllSymbolsAsyncEnumerable(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Parses the given mana cost parameter and returns Scryfall’s interpretation.

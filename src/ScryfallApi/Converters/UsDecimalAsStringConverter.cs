@@ -18,5 +18,5 @@ internal class UsDecimalAsStringConverter : JsonConverter<decimal?>
         return value is null ? null : decimal.Parse(value, numberFormat);
     }
 
-    public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options) => writer.WriteStringValue(value?.ToString());
+    public override void Write(Utf8JsonWriter writer, decimal? value, JsonSerializerOptions options) => writer.WriteStringValue(value?.ToString("C2", CultureInfo.InvariantCulture));
 }

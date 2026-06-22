@@ -1,0 +1,6 @@
+{
+  "object": "catalog",
+  "uri": "https://api.scryfall.com/catalog/empty",
+  "total_values": 0,
+  "data": []
+}

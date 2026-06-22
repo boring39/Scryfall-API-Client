@@ -1,0 +1,59 @@
+{
+    "object": "list",
+    "has_more": false,
+    "data": [
+        {
+            "object": "set",
+            "id": "974e1012-df4a-44ea-aea4-4bf2f62b4cbf",
+            "code": "om2",
+            "mtgo_code": "om2",
+            "arena_code": "om2",
+            "name": "Through the Omenpaths 2",
+            "uri": "https://api.scryfall.com/sets/974e1012-df4a-44ea-aea4-4bf2f62b4cbf",
+            "scryfall_uri": "https://scryfall.com/sets/om2",
+            "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Aom2&unique=prints",
+            "released_at": "2026-06-26",
+            "set_type": "expansion",
+            "card_count": 0,
+            "parent_set_code": "msh",
+            "digital": false,
+            "nonfoil_only": true,
+            "foil_only": true,
+            "icon_svg_uri": "https://svgs.scryfall.io/sets/default.svg?1776657600"
+        },
+        {
+            "object": "set",
+            "id": "ba9bf625-681c-4a4e-ab48-399b2fecac6b",
+            "code": "msh",
+            "tcgplayer_id": 24553,
+            "name": "Marvel Super Heroes",
+            "uri": "https://api.scryfall.com/sets/ba9bf625-681c-4a4e-ab48-399b2fecac6b",
+            "scryfall_uri": "https://scryfall.com/sets/msh",
+            "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Amsh&unique=prints",
+            "released_at": "2026-06-26",
+            "set_type": "expansion",
+            "card_count": 20,
+            "digital": false,
+            "nonfoil_only": false,
+            "foil_only": false,
+            "icon_svg_uri": "https://svgs.scryfall.io/sets/msh.svg?1776657600"
+        },
+        {
+            "object": "set",
+            "id": "1226146b-024f-4456-be60-edf06fc054df",
+            "code": "tmsh",
+            "name": "Marvel Super Heroes Tokens",
+            "uri": "https://api.scryfall.com/sets/1226146b-024f-4456-be60-edf06fc054df",
+            "scryfall_uri": "https://scryfall.com/sets/tmsh",
+            "search_uri": "https://api.scryfall.com/cards/search?include_extras=true&include_variations=true&order=set&q=e%3Atmsh&unique=prints",
+            "released_at": "2026-06-26",
+            "set_type": "token",
+            "card_count": 0,
+            "parent_set_code": "msh",
+            "digital": false,
+            "nonfoil_only": true,
+            "foil_only": true,
+            "icon_svg_uri": "https://svgs.scryfall.io/sets/default.svg?1776657600"
+        }
+    ]
+}

@@ -17,11 +17,11 @@ internal sealed class Symbology : ISymbology
         _restService = restService;
     }
 
-    public Task<ListObject<CardSymbol>> GetAsync(CancellationToken cancellationToken = default)
-        => _restService.GetListAsync<CardSymbol>(BaseEndpointUri, cancellationToken: cancellationToken);
+    public Task<ScryfallList<ScryfallCardSymbol>> GetAsync(CancellationToken cancellationToken = default)
+        => _restService.GetListAsync<ScryfallCardSymbol>(BaseEndpointUri, cancellationToken: cancellationToken);
 
-    public IAsyncEnumerable<CardSymbol> GetAllSymbolsAsyncEnumerable(CancellationToken cancellationToken = default)
-        => _restService.GetPagedAsync<CardSymbol>(BaseEndpointUri, cancellationToken);
+    public IAsyncEnumerable<ScryfallCardSymbol> GetAllSymbolsAsyncEnumerable(CancellationToken cancellationToken = default)
+        => _restService.GetPagedAsync<ScryfallCardSymbol>(BaseEndpointUri, cancellationToken);
 
     public Task<ManaCost> ParseManaAsync(string cost, CancellationToken cancellationToken = default)
     {
